@@ -1,12 +1,11 @@
 # tests/test_indexer.py
-import pytest
 from unittest.mock import patch, MagicMock
 
 import backend.ingestion.indexer
 from backend.ingestion.indexer import Indexer
 
 
-def _make_chunk(i=0, existing=False):
+def _make_chunk(i=0):
     return {
         "vector_id": f"youtube_vid{i}_{i}",
         "embedding": [0.1] * 1024,
@@ -54,6 +53,10 @@ def test_upsert_chunks_batches_in_100():
 
     # 250 chunks → 3 upsert calls (100 + 100 + 50)
     assert mock_index.upsert.call_count == 3
+    total_upserted = sum(
+        len(call[1]["vectors"]) for call in mock_index.upsert.call_args_list
+    )
+    assert total_upserted == 250
 
 
 def test_existing_vectors_are_skipped():

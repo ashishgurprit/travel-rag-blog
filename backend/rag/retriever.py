@@ -66,13 +66,12 @@ class Retriever:
         # Step 6: convert matches to dicts
         results_list = [
             {
-                "text": match.metadata.get("text", ""),
+                "text": (match.metadata or {}).get("text", ""),
                 "score": match.score,
-                "url": match.metadata.get("url", ""),
-                "title": match.metadata.get("title", ""),
-                "timestamp_seconds": match.metadata.get("timestamp_seconds", 0),
-                "source_type": match.metadata.get("source_type", ""),
-                "destination": match.metadata.get("destination", ""),
+                "url": (match.metadata or {}).get("url", ""),
+                "title": (match.metadata or {}).get("title", ""),
+                "timestamp_seconds": (match.metadata or {}).get("timestamp_seconds", 0),
+                "source_type": (match.metadata or {}).get("source_type", ""),
             }
             for match in results.matches
         ]

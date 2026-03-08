@@ -28,7 +28,7 @@ class QueryCache:
             if value is None:
                 return None
             return json.loads(value)
-        except redis.exceptions.ConnectionError as e:
+        except redis.exceptions.RedisError as e:
             print(f"Warning: Redis unavailable: {e}")
             return None
 
@@ -40,5 +40,5 @@ class QueryCache:
                 json.dumps(results),
                 ex=settings.redis_cache_ttl,
             )
-        except redis.exceptions.ConnectionError as e:
+        except redis.exceptions.RedisError as e:
             print(f"Warning: Redis unavailable, skipping cache write: {e}")

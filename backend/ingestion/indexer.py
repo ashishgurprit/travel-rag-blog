@@ -39,9 +39,13 @@ class Indexer:
             return {"upserted": 0, "skipped": 0}
 
         # Collect all vector IDs and check which already exist.
+        # Pinecone fetch is limited to 1,000 IDs per call — batch accordingly.
         all_ids = [chunk["vector_id"] for chunk in chunks]
-        fetch_response = self._index.fetch(ids=all_ids)
-        existing_ids: set[str] = set(fetch_response.vectors.keys())
+        existing_ids: set[str] = set()
+        for fetch_start in range(0, len(all_ids), _BATCH_SIZE):
+            batch_ids = all_ids[fetch_start : fetch_start + _BATCH_SIZE]
+            fetch_response = self._index.fetch(ids=batch_ids)
+            existing_ids.update(fetch_response.vectors.keys())
 
         new_chunks = [c for c in chunks if c["vector_id"] not in existing_ids]
         skipped = len(chunks) - len(new_chunks)
@@ -53,7 +57,7 @@ class Indexer:
                 {
                     "id": chunk["vector_id"],
                     "values": chunk["embedding"],
-                    "metadata": {key: chunk.get(key) for key in _METADATA_KEYS},
+                    "metadata": {key: chunk[key] for key in _METADATA_KEYS if key in chunk},
                 }
                 for chunk in batch
             ]

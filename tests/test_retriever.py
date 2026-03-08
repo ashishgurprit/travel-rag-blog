@@ -1,5 +1,4 @@
 # tests/test_retriever.py
-import pytest
 from unittest.mock import patch, MagicMock
 
 import backend.rag.retriever
@@ -94,7 +93,7 @@ def test_pinecone_called_without_filter_for_unknown_destination():
         retriever.retrieve("best beaches anywhere")
 
     call_kwargs = mock_index.query.call_args[1]
-    assert "filter" not in call_kwargs or call_kwargs.get("filter") is None
+    assert "filter" not in call_kwargs
 
 
 def test_results_stored_in_cache_after_pinecone_query():
