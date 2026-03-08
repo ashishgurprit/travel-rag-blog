@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 # Pre-download HuggingFace models into /models
 ENV HF_HOME=/models
+ENV PYTHONPATH=/install/lib/python3.11/site-packages
 COPY scripts/download_models.py scripts/download_models.py
 RUN python scripts/download_models.py
 
