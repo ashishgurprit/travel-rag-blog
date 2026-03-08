@@ -121,7 +121,7 @@ class TestAskEndpoint:
 
         events = _parse_sse(response.text)
         text_events = [e for e in events if e["type"] == "text"]
-        assert len(text_events) >= 1
+        assert len(text_events) == 2
         assert all("content" in e for e in text_events)
 
     def test_ask_streams_disclosure_event(self):

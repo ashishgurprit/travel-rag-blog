@@ -45,10 +45,12 @@ async def _stream_response(query: str) -> AsyncGenerator[str, None]:
         generator = Generator()
 
     chunks = retriever.retrieve(query)
-    reranked = reranker.rerank(query, chunks, top_n=5)
 
-    # Pass reranked list (or None if chunks was None) to generator
-    gen_input = reranked if chunks is not None else None
+    # Only rerank if retrieval returned results; otherwise pass None to generator
+    if chunks is not None:
+        gen_input = reranker.rerank(query, chunks, top_n=5)
+    else:
+        gen_input = None
 
     full_text_parts: list[str] = []
     pending_events: list[dict] = []  # sources + disclosure held until affiliate resolved
