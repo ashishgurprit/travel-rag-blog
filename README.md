@@ -41,4 +41,28 @@ python -m pytest -q
 ```
 
 ## Deployment
-Deploy backend to Railway using `railway.toml`. Set all env vars from `.env.example` in Railway dashboard.
+
+### Backend — Google Cloud Run
+
+```bash
+# One-time setup
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
+  secretmanager.googleapis.com artifactregistry.googleapis.com \
+  redis.googleapis.com vpcaccess.googleapis.com
+
+# Build and deploy
+gcloud builds submit --config cloudbuild.yaml \
+  --substitutions=_REGION=us-central1,_REPO=travel-rag
+```
+
+See `deploy/cloud-run-service.yaml` for full Cloud Run configuration.
+Secrets managed via GCP Secret Manager — see `docs/plans/2026-03-09-cloud-run-deployment.md` for setup.
+
+### Frontend — Vercel
+
+```bash
+cd frontend
+vercel deploy --prod
+```
+
+Set `NEXT_PUBLIC_API_URL` to your Cloud Run backend URL in Vercel project settings.

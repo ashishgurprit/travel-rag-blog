@@ -1,0 +1,72 @@
+# deploy/cloud-run-service.yaml
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: travel-rag-backend
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/min-scale: "1"
+        run.googleapis.com/max-scale: "10"
+        run.googleapis.com/vpc-access-connector: projects/PROJECT_ID/locations/REGION/connectors/travel-rag-connector
+        run.googleapis.com/vpc-access-egress: private-ranges-only
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+        - image: REGION-docker.pkg.dev/PROJECT_ID/travel-rag/backend:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 4Gi
+              cpu: "2"
+          env:
+            - name: PINECONE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: PINECONE_API_KEY
+                  key: latest
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ANTHROPIC_API_KEY
+                  key: latest
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: REDIS_URL
+                  key: latest
+            - name: PINECONE_INDEX_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: PINECONE_INDEX_NAME
+                  key: latest
+            - name: CORS_ORIGIN
+              valueFrom:
+                secretKeyRef:
+                  name: CORS_ORIGIN
+                  key: latest
+            - name: BOOKING_AFFILIATE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: BOOKING_AFFILIATE_ID
+                  key: latest
+            - name: KLOOK_AFFILIATE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: KLOOK_AFFILIATE_ID
+                  key: latest
+            - name: WISE_AFFILIATE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: WISE_AFFILIATE_ID
+                  key: latest
+          livenessProbe:
+            httpGet:
+              path: /health
+            initialDelaySeconds: 10
+            periodSeconds: 30
