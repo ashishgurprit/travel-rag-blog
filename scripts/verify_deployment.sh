@@ -61,12 +61,15 @@ T2=$(curl -sf -o /dev/null -w "%{time_total}" -X POST "$BASE_URL/api/ask" \
 
 echo "  First request:  ${T1}s"
 echo "  Second request: ${T2}s"
-# Rough check: second should be at least 1s faster
+# Rough check: second should be at least 1s faster.
+# Advisory only — network variance makes hard timing gates unreliable.
+# Check Cloud Run logs for "cache hit" to confirm Redis is working.
 if (( $(echo "$T1 - $T2 > 1.0" | bc -l) )); then
   echo "✓ Redis cache (second request faster)"
   ((PASS++))
 else
-  echo "⚠ Redis cache timing inconclusive — check Cloud Run logs manually"
+  echo "⚠ Redis cache timing inconclusive (advisory — does not affect pass/fail)"
+  echo "  Verify cache manually: check Cloud Run logs for Redis connection"
 fi
 
 echo ""
