@@ -1,5 +1,5 @@
 import pytest
-from pydantic_settings import SettingsConfigDict
+from pydantic import ValidationError
 
 
 def test_settings_loads_from_env_vars(monkeypatch):
@@ -24,8 +24,11 @@ def test_default_values(monkeypatch):
     assert s.confidence_threshold == 0.75
 
 
-def test_required_fields_present_in_class():
+def test_missing_required_fields_raises_error(monkeypatch):
+    """Settings cannot be instantiated without required env vars."""
     from backend.config import Settings
 
-    assert "pinecone_api_key" in Settings.model_fields
-    assert "anthropic_api_key" in Settings.model_fields
+    monkeypatch.delenv("PINECONE_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    with pytest.raises((ValidationError, RuntimeError)):
+        Settings(_env_file=None)
