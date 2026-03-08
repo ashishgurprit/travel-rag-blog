@@ -1,7 +1,7 @@
 {
-  "japan": ["JapanTravel", "japanlife"],
-  "thailand": ["ThailandTourism", "thailand"],
-  "italy": ["italytravel", "Italy"],
-  "turkey": ["Turkey", "istanbul"],
-  "south_korea": ["korea", "seoul"]
+  "japan": ["JapanTravel", "japanlife", "Tokyo", "JapanTravelTips"],
+  "thailand": ["ThailandTourism", "Thailand", "BangkokTravelTips"],
+  "italy": ["ItalyTravel", "italy", "rome", "florence"],
+  "turkey": ["turkey", "istanbul", "TurkeyTravel"],
+  "south_korea": ["koreatravel", "korea", "Seoul"]
 }
