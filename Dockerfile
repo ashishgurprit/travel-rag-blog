@@ -35,7 +35,7 @@ COPY backend/ backend/
 COPY pyproject.toml .
 
 # Non-root user for security
-RUN useradd -m appuser && chown -R appuser /app
+RUN useradd -m appuser && chown -R appuser /app /models
 USER appuser
 
 EXPOSE 8080
