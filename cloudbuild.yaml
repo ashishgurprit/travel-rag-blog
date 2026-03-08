@@ -16,7 +16,7 @@ steps:
     args: ['push', '--all-tags',
            '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO/backend']
 
-  # Deploy to Cloud Run
+  # Deploy to Cloud Run — secrets injected from Secret Manager via --set-secrets
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
@@ -33,7 +33,10 @@ steps:
       - '--timeout=300'
       - '--concurrency=80'
       - '--port=8080'
-      - '--no-allow-unauthenticated'
+      - '--allow-unauthenticated'
+      - '--vpc-connector=travel-rag-connector'
+      - '--vpc-egress=private-ranges-only'
+      - '--set-secrets=PINECONE_API_KEY=PINECONE_API_KEY:latest,ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest,REDIS_URL=REDIS_URL:latest,PINECONE_INDEX_NAME=PINECONE_INDEX_NAME:latest,CORS_ORIGIN=CORS_ORIGIN:latest,BOOKING_AFFILIATE_ID=BOOKING_AFFILIATE_ID:latest,KLOOK_AFFILIATE_ID=KLOOK_AFFILIATE_ID:latest,WISE_AFFILIATE_ID=WISE_AFFILIATE_ID:latest'
 
 substitutions:
   _REGION: us-central1
