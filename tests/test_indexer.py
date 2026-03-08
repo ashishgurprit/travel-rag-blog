@@ -18,6 +18,7 @@ def _make_chunk(i=0, existing=False):
         "timestamp_seconds": 0,
         "language": "en",
         "chunk_index": i,
+        "total_chunks": 5,
     }
 
 
@@ -85,3 +86,5 @@ def test_upsert_payload_contains_metadata():
     assert len(v["values"]) == 1024
     assert v["metadata"]["destination"] == "japan"
     assert v["metadata"]["source_type"] == "youtube"
+    assert v["metadata"]["text"] == "chunk 0"
+    assert v["metadata"]["total_chunks"] == 5

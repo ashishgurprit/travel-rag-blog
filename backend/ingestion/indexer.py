@@ -6,6 +6,7 @@ from backend.config import settings
 
 _BATCH_SIZE = 100
 _METADATA_KEYS = (
+    "text",
     "destination",
     "source_type",
     "url",
@@ -13,6 +14,7 @@ _METADATA_KEYS = (
     "timestamp_seconds",
     "language",
     "chunk_index",
+    "total_chunks",
 )
 
 
