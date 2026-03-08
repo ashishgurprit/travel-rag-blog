@@ -1,0 +1,21 @@
+{
+  "version": "1.90.0",
+  "sync_method": "config",
+  "database_path": "/Users/ashishganda/Development/streamlined-development/.claude/content.db",
+  "master_repo": "/Users/ashishganda/Development/streamlined-development",
+  "project_name": "travel-rag-blog",
+  "project_path": "/Users/ashishganda/Development/travel-rag-blog",
+  "last_sync": "2026-03-07T14:15:25Z",
+  "platform": "macos",
+  "features": {
+    "centralized_lessons": true,
+    "centralized_skills": true,
+    "centralized_code_blocks": true,
+    "centralized_memory": true,
+    "local_overrides": true
+  },
+  "paths": {
+    "content_database": "/Users/ashishganda/Development/streamlined-development/.claude/content.db",
+    "claude_helper": "/Users/ashishganda/Development/streamlined-development/.claude/claude_helper.py"
+  }
+}

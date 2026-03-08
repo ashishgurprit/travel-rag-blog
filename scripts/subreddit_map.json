@@ -1,0 +1,7 @@
+{
+  "japan": ["JapanTravel", "japanlife"],
+  "thailand": ["ThailandTourism", "thailand"],
+  "italy": ["italytravel", "Italy"],
+  "turkey": ["Turkey", "istanbul"],
+  "south_korea": ["korea", "seoul"]
+}
