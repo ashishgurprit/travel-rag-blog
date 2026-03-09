@@ -3,6 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "env": {
-    "NEXT_PUBLIC_API_URL": "@travel-rag-api-url"
+    "NEXT_PUBLIC_API_URL": "https://travel-rag-backend-701613194033.us-central1.run.app"
   }
 }
