@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     reddit_client_secret: str = ""
     reddit_user_agent: str = "travel-rag-indexer/1.0"
     youtube_api_key: str = ""
+    tavily_api_key: str = ""
     booking_affiliate_id: str = ""
     klook_affiliate_id: str = ""
     wise_affiliate_id: str = ""

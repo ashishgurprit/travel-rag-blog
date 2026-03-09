@@ -11,6 +11,7 @@ from backend.affiliate.router import route_affiliate
 from backend.rag.generator import Generator
 from backend.rag.reranker import Reranker
 from backend.rag.retriever import Retriever
+from backend.rag.web_search import search_web
 
 router = APIRouter()
 
@@ -46,9 +47,20 @@ async def _stream_response(query: str) -> AsyncGenerator[str, None]:
 
     chunks = retriever.retrieve(query)
 
-    # Only rerank if retrieval returned results; otherwise pass None to generator
+    # Augment with live web results from Tavily (runs even if Pinecone has results)
+    web_chunks = search_web(query, max_results=3)
+
+    # Merge: Pinecone chunks + web chunks, then rerank together
+    all_chunks: list[dict] | None
     if chunks is not None:
-        gen_input = reranker.rerank(query, chunks, top_n=5)
+        all_chunks = chunks + web_chunks
+    elif web_chunks:
+        all_chunks = web_chunks
+    else:
+        all_chunks = None
+
+    if all_chunks is not None:
+        gen_input = reranker.rerank(query, all_chunks, top_n=5)
     else:
         gen_input = None
 
