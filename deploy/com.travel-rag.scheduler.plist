@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS launchd plist for the Travel RAG discovery scheduler.
+
+  Install:
+    cp deploy/com.travel-rag.scheduler.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.travel-rag.scheduler.plist
+
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.travel-rag.scheduler.plist
+    rm ~/Library/LaunchAgents/com.travel-rag.scheduler.plist
+
+  Check status:
+    launchctl list | grep travel-rag
+
+  View logs:
+    tail -f /tmp/travel-rag-scheduler.log
+    tail -f /tmp/travel-rag-scheduler-error.log
+
+  Notes:
+  - StartCalendarInterval fires the job at the specified time.
+    If the Mac was asleep, launchd fires it at next wake.
+  - The Python process runs the scheduler which has APScheduler
+    managing the weekly/monthly job timing internally.
+  - WorkingDirectory must be the repo root (for .env loading).
+  - Update WorkingDirectory and ProgramArguments paths if repo is
+    in a different location.
+-->
+<plist version="1.0">
+<dict>
+  <!-- Service identifier — must be unique on the system -->
+  <key>Label</key>
+  <string>com.travel-rag.scheduler</string>
+
+  <!-- Command to run: python -m backend.ingestion.scheduler -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>-m</string>
+    <string>backend.ingestion.scheduler</string>
+  </array>
+
+  <!-- Must match your repo root so .env and relative paths resolve -->
+  <key>WorkingDirectory</key>
+  <string>/Users/ashishganda/Development/travel-rag-blog</string>
+
+  <!--
+    Fire at Monday 2am AEST (UTC+11 in summer / UTC+10 in winter).
+    launchd uses local system time. Two entries cover DST transitions.
+    APScheduler inside the process handles the actual cron logic.
+  -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <!-- Weekly: Monday 2am local time -->
+    <dict>
+      <key>Weekday</key><integer>1</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <!-- Monthly: 1st of month 6am local time -->
+    <dict>
+      <key>Day</key><integer>1</integer>
+      <key>Hour</key><integer>6</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <!-- Logging -->
+  <key>StandardOutPath</key>
+  <string>/tmp/travel-rag-scheduler.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/travel-rag-scheduler-error.log</string>
+
+  <!-- Keep alive only while scheduled — don't restart continuously -->
+  <key>KeepAlive</key>
+  <false/>
+
+  <!-- Run at user login even if not logged in at scheduled time -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <!-- Environment variables (supplement .env file) -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>PYTHONPATH</key>
+    <string>/Users/ashishganda/Development/travel-rag-blog</string>
+  </dict>
+
+  <!-- Throttle: don't restart more than once per 60s if it crashes -->
+  <key>ThrottleInterval</key>
+  <integer>60</integer>
+</dict>
+</plist>
