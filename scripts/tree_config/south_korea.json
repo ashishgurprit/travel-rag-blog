@@ -1,0 +1,75 @@
+{
+  "destination": "south_korea",
+  "cities": [
+    {
+      "name": "seoul",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["cuisine", "street_food", "nightlife", "shopping", "architecture", "day_trips", "itinerary", "hidden_gems"]
+    },
+    {
+      "name": "busan",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["beaches", "cuisine", "street_food", "architecture", "day_trips", "itinerary"]
+    },
+    {
+      "name": "jeju",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 16,
+      "categories": ["nature", "beaches", "cuisine", "day_trips", "itinerary"]
+    },
+    {
+      "name": "gyeongju",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["temples", "architecture", "traditional_culture", "day_trips"]
+    },
+    {
+      "name": "incheon",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["cuisine", "day_trips", "hidden_gems"]
+    },
+    {
+      "name": "jeonju",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["traditional_culture", "cuisine", "street_food", "architecture"]
+    },
+    {
+      "name": "suwon",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["architecture", "day_trips", "traditional_culture"]
+    },
+    {
+      "name": "andong",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["traditional_culture", "hidden_gems", "architecture"]
+    },
+    {
+      "name": "sokcho",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["nature", "hidden_gems", "cuisine"]
+    },
+    {
+      "name": "tongyeong",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["hidden_gems", "cuisine", "nature"]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "destination": "italy",
+  "cities": [
+    {
+      "name": "rome",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["architecture", "museums", "cuisine", "day_trips", "itinerary", "hidden_gems", "budget_tips"]
+    },
+    {
+      "name": "florence",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["museums", "architecture", "cuisine", "shopping", "day_trips", "itinerary"]
+    },
+    {
+      "name": "venice",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["architecture", "cuisine", "day_trips", "itinerary", "hidden_gems", "budget_tips"]
+    },
+    {
+      "name": "milan",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 14,
+      "categories": ["architecture", "shopping", "cuisine", "nightlife", "museums"]
+    },
+    {
+      "name": "naples",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["street_food", "cuisine", "day_trips", "architecture"]
+    },
+    {
+      "name": "amalfi_coast",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["nature", "beaches", "itinerary", "day_trips"]
+    },
+    {
+      "name": "cinque_terre",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["nature", "hidden_gems", "itinerary"]
+    },
+    {
+      "name": "sicily",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["cuisine", "beaches", "architecture", "itinerary"]
+    },
+    {
+      "name": "bologna",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["cuisine", "hidden_gems", "architecture"]
+    },
+    {
+      "name": "puglia",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["hidden_gems", "beaches", "cuisine", "architecture"]
+    },
+    {
+      "name": "sardinia",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["beaches", "nature", "hidden_gems"]
+    }
+  ]
+}

@@ -62,7 +62,7 @@ def chunk_document(
     total = len(raw_chunks)
     chunks = []
     for i, chunk_text in enumerate(raw_chunks):
-        chunks.append({
+        chunk = {
             "text": chunk_text,
             "chunk_index": i,
             "total_chunks": total,
@@ -73,6 +73,11 @@ def chunk_document(
             "timestamp_seconds": doc.get("timestamp_start", 0),
             "language": doc.get("language", "en"),
             "vector_id": f"{source_type}_{doc_id}_{i}",
-        })
+        }
+        # Pass through provenance metadata when present (tree-discovered content)
+        for key in ("tree_node", "tier", "provenance_score", "sources"):
+            if key in doc:
+                chunk[key] = doc[key]
+        chunks.append(chunk)
 
     return chunks

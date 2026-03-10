@@ -15,6 +15,11 @@ _METADATA_KEYS = (
     "language",
     "chunk_index",
     "total_chunks",
+    # Discovery provenance fields (optional — present only for tree-discovered content)
+    "tree_node",
+    "tier",
+    "provenance_score",
+    "sources",
 )
 
 

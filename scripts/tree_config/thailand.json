@@ -1,0 +1,75 @@
+{
+  "destination": "thailand",
+  "cities": [
+    {
+      "name": "bangkok",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["street_food", "temples", "nightlife", "shopping", "day_trips", "itinerary", "budget_tips"]
+    },
+    {
+      "name": "chiang_mai",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["temples", "traditional_culture", "nature", "cuisine", "day_trips", "itinerary"]
+    },
+    {
+      "name": "phuket",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["beaches", "nightlife", "cuisine", "day_trips", "itinerary", "budget_tips"]
+    },
+    {
+      "name": "koh_samui",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["beaches", "cuisine", "day_trips", "nature"]
+    },
+    {
+      "name": "ayutthaya",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["temples", "architecture", "day_trips", "itinerary"]
+    },
+    {
+      "name": "pai",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["nature", "traditional_culture", "budget_tips"]
+    },
+    {
+      "name": "krabi",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["beaches", "nature", "day_trips"]
+    },
+    {
+      "name": "koh_lanta",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["beaches", "hidden_gems", "budget_tips"]
+    },
+    {
+      "name": "chiang_rai",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["temples", "nature", "hidden_gems", "day_trips"]
+    },
+    {
+      "name": "kanchanaburi",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["nature", "hidden_gems", "day_trips"]
+    }
+  ]
+}

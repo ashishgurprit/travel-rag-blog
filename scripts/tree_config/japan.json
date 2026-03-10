@@ -1,0 +1,89 @@
+{
+  "destination": "japan",
+  "cities": [
+    {
+      "name": "tokyo",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["cuisine", "architecture", "museums", "nightlife", "shopping", "day_trips", "hidden_gems", "itinerary"]
+    },
+    {
+      "name": "kyoto",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["temples", "traditional_culture", "architecture", "cuisine", "day_trips", "nature", "itinerary"]
+    },
+    {
+      "name": "osaka",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["street_food", "cuisine", "nightlife", "shopping", "day_trips", "itinerary"]
+    },
+    {
+      "name": "hiroshima",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["museums", "architecture", "nature", "day_trips", "itinerary"]
+    },
+    {
+      "name": "nara",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["nature", "temples", "day_trips", "traditional_culture"]
+    },
+    {
+      "name": "hakone",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["nature", "day_trips", "budget_tips"]
+    },
+    {
+      "name": "fukuoka",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["street_food", "cuisine", "nightlife", "day_trips"]
+    },
+    {
+      "name": "sapporo",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["cuisine", "nature", "itinerary"]
+    },
+    {
+      "name": "kanazawa",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["traditional_culture", "cuisine", "architecture", "hidden_gems"]
+    },
+    {
+      "name": "yakushima",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["nature", "hidden_gems"]
+    },
+    {
+      "name": "nikko",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["temples", "nature", "day_trips"]
+    },
+    {
+      "name": "takayama",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["traditional_culture", "hidden_gems", "cuisine"]
+    }
+  ]
+}

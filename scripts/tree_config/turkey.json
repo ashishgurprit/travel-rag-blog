@@ -1,0 +1,68 @@
+{
+  "destination": "turkey",
+  "cities": [
+    {
+      "name": "istanbul",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 20,
+      "categories": ["architecture", "cuisine", "street_food", "shopping", "nightlife", "day_trips", "itinerary", "hidden_gems"]
+    },
+    {
+      "name": "cappadocia",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 18,
+      "categories": ["nature", "architecture", "itinerary", "day_trips", "hidden_gems"]
+    },
+    {
+      "name": "antalya",
+      "tier": 1,
+      "min_videos": 5,
+      "max_videos": 16,
+      "categories": ["beaches", "cuisine", "day_trips", "itinerary", "budget_tips"]
+    },
+    {
+      "name": "ephesus",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["architecture", "museums", "day_trips", "itinerary"]
+    },
+    {
+      "name": "pamukkale",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 10,
+      "categories": ["nature", "hidden_gems", "day_trips"]
+    },
+    {
+      "name": "bodrum",
+      "tier": 2,
+      "min_videos": 3,
+      "max_videos": 12,
+      "categories": ["beaches", "nightlife", "cuisine", "day_trips"]
+    },
+    {
+      "name": "trabzon",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["nature", "hidden_gems", "traditional_culture"]
+    },
+    {
+      "name": "mardin",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 8,
+      "categories": ["architecture", "hidden_gems", "traditional_culture"]
+    },
+    {
+      "name": "mount_nemrut",
+      "tier": 3,
+      "min_videos": 3,
+      "max_videos": 6,
+      "categories": ["nature", "hidden_gems", "day_trips"]
+    }
+  ]
+}
