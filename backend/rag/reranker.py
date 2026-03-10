@@ -33,7 +33,8 @@ class Reranker:
         scores = self._model.compute_score(pairs, normalize=True)
 
         for chunk, score in zip(chunks, scores):
-            chunk["rerank_score"] = score
+            provenance = chunk.get("provenance_score", 0.0) or 0.0
+            chunk["rerank_score"] = score * (1 + 0.2 * provenance)
 
         sorted_chunks = sorted(chunks, key=lambda c: c["rerank_score"], reverse=True)
         return sorted_chunks[:top_n]
