@@ -56,7 +56,7 @@ def _get_singletons():
 # ── RAG path ─────────────────────────────────────────────────────────────────
 
 async def _rag_stream(query: str) -> AsyncGenerator[dict, None]:
-    """Pinecone retrieval → reranker → generator."""
+    """Pinecone retrieval → reranker → generator. Yields raw events; no affiliate injection."""
     chunks = retriever.retrieve(query)
     web_chunks = search_web(query, max_results=3)
 
@@ -69,23 +69,7 @@ async def _rag_stream(query: str) -> AsyncGenerator[dict, None]:
 
     gen_input = reranker.rerank(query, all_chunks, top_n=5) if all_chunks else None
 
-    full_text_parts: list[str] = []
-    pending_events: list[dict] = []
-
     async for event in generator.generate(query, gen_input):
-        if event["type"] == "text":
-            full_text_parts.append(event["content"])
-        else:
-            pending_events.append(event)
-        yield event
-
-    full_text = "".join(full_text_parts)
-    affiliate = route_affiliate(full_text)
-
-    for event in pending_events:
-        if event["type"] == "disclosure" and affiliate is not None:
-            yield {"type": "affiliate", "content": affiliate}
-            affiliate = None
         yield event
 
 

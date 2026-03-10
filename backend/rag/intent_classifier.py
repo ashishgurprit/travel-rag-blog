@@ -37,14 +37,14 @@ how to get somewhere, itinerary scheduling. ("How do I get from Tokyo to Kyoto?"
 ("Plan my 7-day Tokyo trip with budget breakdown")
 
 Respond with ONLY valid JSON:
-{
+{{
   "intent": "RAG" | "LOGISTICS" | "HYBRID",
   "destination": "<destination or null>",
   "cities": ["<city>"],
   "travel_dates": "<dates or null>",
   "passport": "<nationality or null>",
   "budget_tier": "budget" | "mid" | "luxury" | null
-}
+}}
 
 Query: {query}"""
 

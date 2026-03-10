@@ -41,7 +41,7 @@ app.add_middleware(
     allow_origins=[settings.cors_origin],
     allow_credentials=True,
     allow_methods=["POST", "GET", "OPTIONS"],
-    allow_headers=["Content-Type"],
+    allow_headers=["Content-Type", "X-Session-ID"],
 )
 
 # Mount routers
